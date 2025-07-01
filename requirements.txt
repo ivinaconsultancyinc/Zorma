@@ -1,0 +1,20 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pydantic
+python-multipart
+passlib[bcrypt]
+email-validator
+python-jose[cryptography]
+jinja2
+aiofiles
+
+# Optional: Reporting & Data Science
+fpdf
+reportlab
+XlsxWriter
+numpy
+pandas
+scikit-learn
+prophet
+matplotlib
