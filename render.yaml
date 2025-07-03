@@ -1,12 +1,25 @@
-
-services:
-  - type: web
-    name: insurance-api
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn insurance_app_main\ 1:app --host 0.0.0.0 --port 10000
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10
-      - key: PORT
-        value: 10000
+ routes:
+  - path: /form/clients
+    description: Render the Clients form template
+  - path: /form/policies
+    description: Render the Policies form template
+  - path: /form/products
+    description: Render the Products form template
+  - path: /form/premiums
+    description: Render the Premiums form template
+  - path: /form/commissions
+    description: Render the Commissions form template
+  - path: /form/claims
+    description: Render the Claims form template
+  - path: /form/customers
+    description: Render the Customers form template
+  - path: /form/agents
+    description: Render the Agents form template
+  - path: /form/documents
+    description: Render the Documents form template
+  - path: /form/audit
+    description: Render the Audit form template
+  - path: /form/ledger
+    description: Render the Ledger form template
+  - path: /form/reinsurance
+    description: Render the Reinsurance form template
