@@ -13,6 +13,7 @@ from insurance_app.routers import (
     ledger,
     reinsurance
 )
+from insurance_app import views
 
 app = FastAPI(title="Insurance Company of Africa Management System")
 
@@ -30,10 +31,9 @@ app.include_router(audit.router, prefix="/audit", tags=["Audit"])
 app.include_router(ledger.router, prefix="/ledger", tags=["Ledger"])
 app.include_router(reinsurance.router, prefix="/reinsurance", tags=["Reinsurance"])
 
+# Include views router for rendering templates
+app.include_router(views.router)
+
 @app.get("/")
 def root():
     return {"message": "Welcome to the Insurance Company of Africa API"}
-
-
-
-
