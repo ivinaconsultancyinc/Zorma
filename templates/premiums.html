@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Premiums Form</title>
+    https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Premiums Form</h2>
+    <form method="post" action="/submit/premiums">
+        <div class="mb-3">
+            <label for="premium_id" class="form-label">Premium ID</label>
+            <input type="text" class="form-control" id="premium_id" name="premium_id">
+        </div>
+        <div class="mb-3">
+            <label for="policy_number" class="form-label">Policy Number</label>
+            <input type="text" class="form-control" id="policy_number" name="policy_number">
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" name="amount">
+        </div>
+        <div class="mb-3">
+            <label for="due_date" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="due_date" name="due_date">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
