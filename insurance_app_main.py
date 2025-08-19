@@ -37,3 +37,4 @@ app.include_router(views.router)
 @app.get("/")
 def root():
     return {"message": "Welcome to the Insurance Company of Africa API"}
+
