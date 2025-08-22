@@ -8,3 +8,4 @@ sqlalchemy
 uvicorn
 pydantic[email]
 asyncpg
+psycopg2-binary
