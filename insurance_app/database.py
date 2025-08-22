@@ -1,12 +1,16 @@
 from databases import Database
+from sqlalchemy.ext.declarative import declarative_base
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv()
 
-# Get the database URL from environment variables
+# Get the database URL
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@localhost/dbname")
 
-# Create a Database instance
+# Async database connection
 database = Database(DATABASE_URL)
+
+# SQLAlchemy base class for models
+Base = declarative_base()
