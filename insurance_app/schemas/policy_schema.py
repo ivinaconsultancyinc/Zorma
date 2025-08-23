@@ -1,17 +1,28 @@
-from sqlalchemy import Column, String, Enum, Date, Numeric, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID
-from insurance_app.database import Base
+from pydantic import BaseModel
+from typing import Optional
+from datetime import date
 import uuid
 
-class Policy(Base):
-    __tablename__ = "policies"
+class PolicyBase(BaseModel):
+    client_id: uuid.UUID
+    product_id: uuid.UUID
+    policy_number: str
+    issue_date: date
+    status: Optional[str] = "Active"
+    currency: str  # "USD" or "LRD"
+    sum_assured: float
+    premium_frequency: str  # "Monthly", "Quarterly", "Annually"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
-    client_id = Column(UUID(as_uuid=True), ForeignKey("clients.id"), nullable=False)
-    product_id = Column(UUID(as_uuid=True), ForeignKey("products.id"), nullable=False)
-    policy_number = Column(String, unique=True, nullable=False)
-    issue_date = Column(Date, nullable=False)
-    status = Column(Enum("Active", "Lapsed", "Cancelled", name="policy_status_enum"), default="Active")
-    currency = Column(String(3), nullable=False)  # e.g., USD or LRD
-    sum_assured = Column(Numeric, nullable=False)
-    premium_frequency = Column(Enum("Monthly", "Quarterly", "Annually", name="premium_frequency_enum"), nullable=False)
+class PolicyCreate(PolicyBase):
+    pass
+
+class PolicyUpdate(BaseModel):
+    status: Optional[str]
+    sum_assured: Optional[float]
+    premium_frequency: Optional[str]
+
+class PolicyResponse(PolicyBase):
+    id: uuid.UUID
+
+    class Config:
+        from_attributes = True
