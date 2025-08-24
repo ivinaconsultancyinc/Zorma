@@ -2,6 +2,7 @@ from fastapi import APIRouter, status, Depends
 from sqlalchemy.orm import Session
 from insurance_app.schemas.commission_schema import CommissionCreate, CommissionOut
 from insurance_app.models.commission import Commission
+from insurance_app.database import SessionLocal
 from database import SessionLocal
 
 router = APIRouter()
