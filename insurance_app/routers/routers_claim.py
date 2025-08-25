@@ -2,6 +2,14 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 
+import sys
+import os
+print("Python path:", sys.path)
+print("Current directory:", os.getcwd())
+print("Files in schemas:", os.listdir("insurance_app/schemas/") if os.path.exists("insurance_app/schemas/") else "schemas dir not found")
+
+from insurance_app.schemas.document_schema import DocumentOut
+
 from insurance_app.database import get_db
 from insurance_app.schemas.claim_schema import ClaimCreate, ClaimUpdate, ClaimOut
 from insurance_app.schemas.document_schema import DocumentOut
@@ -39,11 +47,6 @@ def delete_claim(claim_id: int, db: Session = Depends(get_db)):
 def get_documents_for_claim(claim_id: int, db: Session = Depends(get_db)):
     return document_service.get_documents_by_entity(db, "claim", claim_id)
 
-import sys
-import os
-print("Python path:", sys.path)
-print("Current directory:", os.getcwd())
-print("Files in schemas:", os.listdir("insurance_app/schemas/") if os.path.exists("insurance_app/schemas/") else "schemas dir not found")
 
-from insurance_app.schemas.document_schema import DocumentOut
+
 
