@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
-from insurance_app.schemas.policy_schema import PolicyOut, PolicyCreate, PolicyUpdate
+from insurance_app.schemas.policy_schema import PolicyResponse, PolicyCreate, PolicyUpdate
 from insurance_app.schemas.document_schema import DocumentOut
 from insurance_app.database import get_db
 from insurance_app import services
@@ -31,5 +31,6 @@ def delete_policy(policy_id: int, db: Session = Depends(get_db)):
 @router.get("/{policy_id}/documents", response_model=List[DocumentOut])
 def get_documents_for_policy(policy_id: int, db: Session = Depends(get_db)):
     return services.document_service.get_documents_by_entity(db, "policy", policy_id)
+
 
 
